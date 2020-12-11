@@ -1,0 +1,31 @@
+{
+  "name": "exam_online_hfr_portal",
+  "version": "1.0.0",
+  "description": "My praiseworthy Nuxt.js project",
+  "author": "hongfurui",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "element-ui": "^2.4.11",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
+    "nprogress": "^0.2.0",
+    "nuxt": "^2.0.0",
+    "vue-cookie": "^1.1.4"
+  },
+  "devDependencies": {
+    "@babel/compat-data": "^7.9.0"
+  },
+  "config": {
+    "nuxt": {
+      "host": "127.0.0.1",
+      "port": "8011"
+    }
+  }
+}
