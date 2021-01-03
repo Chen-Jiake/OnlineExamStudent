@@ -1,6 +1,10 @@
 <template>
   <div>
-    <el-card class="box-card" style="font-size: 13px; color: #666;text-align: center;">系统若有bug以后有时间再慢慢修复优化了。奥利给！</el-card>
+    <el-card class="box-card" style="font-size: 13px; color: #666; padding: 40px">
+      <el-tag type="success" style="width: 100%;">主要功能</el-tag>
+      <p>1. 考试中心：参加考试</p>
+      <p>2. 历史考试：查看考试成绩以及答题情况</p>
+    </el-card>
   </div>
 </template>
 

@@ -4,7 +4,7 @@
       <el-menu :default-active="$route.path" class="container" mode="horizontal" router>
         <el-menu-item index="/logo" disabled id="logo">
           <img
-            src="@/static/itpanlogo.png"
+            src="@/static/timg.jpeg"
             style="height:45px; width:45px"
             @click="toHome"
             alt="在线考试系统"
@@ -37,34 +37,7 @@
     <div class="container main" ref="main">
       <nuxt />
     </div>
-    <div class="container footer">
-      <p>
-        © 2020&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;开发者：洪福锐&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a
-          target="_blank"
-          style="text-decoration:none;color: #666;"
-          href="https://github.com/hongfurui2014/exam_online_hongfurui"
-        >项目Github</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a
-          target="_blank"
-          style="text-decoration:none;color: #666;"
-          href="http://hongfurui.itdupan.com/"
-        >后台入口</a>
-      </p>
-      <p>
-        粤ICP备18050176号-2&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a
-          target="_blank"
-          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44081102000045"
-          style="text-decoration:none;color: #666;"
-        >
-          <img
-            src="@/static/beian.png"
-            style="display:inline-block;width: 20px; height: 20px;position: relative;bottom: -5px;"
-          /> 粤公网安备44081102000045号
-        </a>
-      </p>
-    </div>
+
   </div>
 </template>
 
@@ -76,7 +49,7 @@ import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 
 axios.defaults.baseURL = "http://39.102.128.251:10011/api/"	//可以设置根路径
-// axios.defaults.baseURL = "http://localhost:10011/api/"; //可以设置根路径
+//axios.defaults.baseURL = "http://localhost:10011/api/"; //可以设置根路径
 
 // 允许携带cookie
 axios.defaults.withCredentials = true;
@@ -180,9 +153,9 @@ export default {
   margin: 0 auto;
 }
 
-.main {
-  // border: solid red 1px;
-}
+// .main {
+//   // border: solid red 1px;
+// }
 
 .footer {
   text-align: center;
