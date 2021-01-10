@@ -35,7 +35,7 @@
           <div v-if="testData.multiList!==undefined && testData.multiList.length > 0">
             <p class="card-title">多选题</p>
             <el-row :gutter="24" class="card-line">
-              <el-tag v-for="item in testData.multiList" :type="cardItemClass(item.answered, item.questionId)" @click="switchQuestion(item)">{{ item.sort+1 }}</el-tag>
+              <el-tag v-for="item in testData.multiList" :type="cardItemClass(item.answered, item.questionId)" @click="switchQuestion(item)">{{ item.sort+1-testData.radioList.length }}</el-tag>
             </el-row>
           </div>
 
@@ -46,7 +46,8 @@
       <el-col :span="18" :xs="24">
 
         <el-card class="qu-content">
-          <p v-if="questionData.questionTitle">{{ questionData.sort + 1 }}.{{ questionData.questionTitle }}</p>
+          <p v-if="questionData.questionTitle && questionData.sort < this.radioNum">{{ questionData.sort + 1 }}.{{ questionData.questionTitle }}</p>
+          <p v-if="questionData.questionTitle && questionData.sort >= this.radioNum">{{ questionData.sort - this.radioNum + 1 }}.{{ questionData.questionTitle }}</p>
           <div v-if="questionData.questionType === 0">
             <el-radio-group v-model="radioValue">
               <el-radio label="A">A. {{ questionData.questionSelectA }} <div style="clear: both" /></el-radio>
@@ -59,10 +60,10 @@
           <div v-if="questionData.questionType === 1">
 
             <el-checkbox-group v-model="multiValue">
-              <el-radio label="A">A. {{ questionData.questionSelectA }} <div style="clear: both" /></el-radio>
-              <el-radio label="B">B. {{ questionData.questionSelectB }} <div style="clear: both" /></el-radio>
-              <el-radio label="C">C. {{ questionData.questionSelectC }} <div style="clear: both" /></el-radio>
-              <el-radio label="D">D. {{ questionData.questionSelectD }} <div style="clear: both" /></el-radio>
+              <el-checkbox label="A">A. {{ questionData.questionSelectA }} <div style="clear: both" /></el-checkbox>
+              <el-checkbox label="B">B. {{ questionData.questionSelectB }} <div style="clear: both" /></el-checkbox>
+              <el-checkbox label="C">C. {{ questionData.questionSelectC }} <div style="clear: both" /></el-checkbox>
+              <el-checkbox label="D">D. {{ questionData.questionSelectD }} <div style="clear: both" /></el-checkbox>
             </el-checkbox-group>
 
           </div>
@@ -104,6 +105,7 @@
         testId: '',
         // 用户ID
         userId: '',
+        radioNum: 0,
         allItem: [],
         // 当前题目内容
         questionData: {
@@ -226,7 +228,6 @@
         this.UserQQuestionQueryVo.questionList = []
         this.UserQQuestionQueryVo.questionList.push(this.testData.radioList)
         this.UserQQuestionQueryVo.questionList.push(this.testData.multiList)
-        console.log(this.UserQQuestionQueryVo)
 
         await this.$http
           .post("/test/userQQuestion/commitTest", this.UserQQuestionQueryVo)
@@ -351,6 +352,7 @@
           })
           .then(response => {
             this.testData.radioList = response.data.data[0]
+            this.radioNum = this.testData.radioList.length
             this.testData.multiList = response.data.data[1]
             for (var item of this.testData.radioList.entries()){
               item[1].sort = item[0]
@@ -358,7 +360,7 @@
               this.allItem.push(item[1])
             }
             for (item of this.testData.multiList.entries()){
-              item[1].sort = item[0]
+              item[1].sort = item[0] + this.radioNum
               item[1].answered = false
               this.allItem.push(item[1])
             }
