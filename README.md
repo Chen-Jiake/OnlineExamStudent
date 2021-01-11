@@ -22,7 +22,10 @@
 3. 学校操作：对班级和科目进行管理
 4. 统计日志：查看系统重要操作日志
 
-## 如何将学生考试界面部署到阿里云
+## 在本机配置后端——以ubuntu18.04为例
+1. 配置环境：nodejs、npm
+
+## 利用docker将学生考试界面部署在阿里云上
 1. 执行npm run build打包
 2. 把node_modules、static、.nuxt、package.json和Dockerfile文件上传到服务器
 3. 执行docker build -t exam-student . 生成镜像
