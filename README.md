@@ -22,8 +22,10 @@
 3. 学校操作：对班级和科目进行管理
 4. 统计日志：查看系统重要操作日志
 
-## 在本机配置后端——以ubuntu18.04为例
-1. 配置环境：nodejs、npm
+## 在本机配置学生考试界面——以ubuntu18.04为例
+1. 配置环境：nodejs、npm、cnpm
+2. 执行cnpm install
+3. 执行npm run dev 
 
 ## 利用docker将学生考试界面部署在阿里云上
 1. 执行npm run build打包
